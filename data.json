@@ -1,8 +1,251 @@
 {
-    "credentials":[
-        {
-            "password":"12345678",
-            "username":"Admin"
-        }
-    ]
+  "credentials": [
+    {
+      "id": 1,
+      "password": "Admin",
+      "username": "Admin"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "first_name": "",
+      "last_name": "",
+      "email": ""
+    },
+    {
+      "id": 2,
+      "first_name": "",
+      "last_name": "",
+      "email": ""
+    },
+    {
+      "id": 3,
+      "first_name": "",
+      "last_name": "",
+      "email": ""
+    },
+    {
+      "id": 4,
+      "first_name": "Adolfo",
+      "last_name": "Boyer",
+      "email": "Lenna.Kulas15@gmail.com"
+    },
+    {
+      "id": 5,
+      "first_name": "Ally",
+      "last_name": "Fritsch",
+      "email": "Shea3@gmail.com"
+    },
+    {
+      "id": 6,
+      "first_name": "Trystan",
+      "last_name": "Dach",
+      "email": "Jensen_Kuhn26@yahoo.com"
+    },
+    {
+      "id": 7,
+      "first_name": "Kevon",
+      "last_name": "Dickens",
+      "email": "Isaiah_Cartwright@hotmail.com"
+    },
+    {
+      "id": 8,
+      "first_name": "Vivianne",
+      "last_name": "Veum",
+      "email": "Bruce1@hotmail.com"
+    },
+    {
+      "id": 9,
+      "first_name": "Jason",
+      "last_name": "Effertz",
+      "email": "Daisy.Hane@hotmail.com"
+    },
+    {
+      "id": 10,
+      "first_name": "Else",
+      "last_name": "Stamm",
+      "email": "Ova.Schoen94@hotmail.com"
+    },
+    {
+      "id": 11,
+      "first_name": "Sarah",
+      "last_name": "Walker",
+      "email": "Katelyn_Ferry85@hotmail.com"
+    },
+    {
+      "id": 12,
+      "first_name": "Bryana",
+      "last_name": "Zemlak",
+      "email": "Angus39@gmail.com"
+    },
+    {
+      "id": 13,
+      "first_name": "Kaylah",
+      "last_name": "Trantow",
+      "email": "Lacy0@hotmail.com"
+    },
+    {
+      "id": 14,
+      "first_name": "Yessenia",
+      "last_name": "Wilderman",
+      "email": "Ramona.Littel-Heller@hotmail.com"
+    },
+    {
+      "id": 15,
+      "first_name": "Macey",
+      "last_name": "Kemmer",
+      "email": "Mark22@yahoo.com"
+    },
+    {
+      "id": 16,
+      "first_name": "Arielle",
+      "last_name": "O'Keefe",
+      "email": "Francisca.Fay@gmail.com"
+    },
+    {
+      "id": 17,
+      "first_name": "Marcellus",
+      "last_name": "Rolfson",
+      "email": "Minnie_Cummings@yahoo.com"
+    },
+    {
+      "id": 18,
+      "first_name": "Katherine",
+      "last_name": "Feeney",
+      "email": "Stuart_DuBuque@yahoo.com"
+    },
+    {
+      "id": 19,
+      "first_name": "Zakary",
+      "last_name": "Romaguera",
+      "email": "Zita_Padberg47@gmail.com"
+    },
+    {
+      "id": 20,
+      "first_name": "Daren",
+      "last_name": "Hermiston",
+      "email": "Lillie34@yahoo.com"
+    },
+    {
+      "id": 21,
+      "first_name": "Rico",
+      "last_name": "Huel",
+      "email": "Victoria_Dach1@gmail.com"
+    },
+    {
+      "id": 22,
+      "first_name": "Eleanora",
+      "last_name": "Bartell",
+      "email": "Freeman90@gmail.com"
+    },
+    {
+      "id": 23,
+      "first_name": "Ricardo",
+      "last_name": "Lueilwitz",
+      "email": "Jermain0@gmail.com"
+    },
+    {
+      "id": 24,
+      "first_name": "Rowena",
+      "last_name": "Cole",
+      "email": "Tomasa_Hackett2@gmail.com"
+    },
+    {
+      "id": 25,
+      "first_name": "Selmer",
+      "last_name": "Emard",
+      "email": "Samson74@yahoo.com"
+    },
+    {
+      "id": 26,
+      "first_name": "Louisa",
+      "last_name": "Kihn",
+      "email": "Christa_Barrows@gmail.com"
+    },
+    {
+      "id": 27,
+      "first_name": "Wiley",
+      "last_name": "Luettgen",
+      "email": "Alessandra.Dare@hotmail.com"
+    },
+    {
+      "id": 28,
+      "first_name": "Jazmyne",
+      "last_name": "Beer",
+      "email": "Tyrel.Schaden83@yahoo.com"
+    },
+    {
+      "id": 29,
+      "first_name": "Keaton",
+      "last_name": "Dicki",
+      "email": "Coleman61@gmail.com"
+    },
+    {
+      "id": 30,
+      "first_name": "Pansy",
+      "last_name": "Moen",
+      "email": "Kasey.VonRueden39@hotmail.com"
+    },
+    {
+      "id": 31,
+      "first_name": "Warren",
+      "last_name": "Oberbrunner",
+      "email": "Aditya_Kshlerin34@gmail.com"
+    },
+    {
+      "id": 32,
+      "first_name": "Caroline",
+      "last_name": "Jacobson",
+      "email": "Camden40@gmail.com"
+    },
+    {
+      "id": 33,
+      "first_name": "Deion",
+      "last_name": "Moore",
+      "email": "Ubaldo.Howe15@gmail.com"
+    },
+    {
+      "id": 34,
+      "first_name": "Maudie",
+      "last_name": "Hermann",
+      "email": "Bryce66@hotmail.com"
+    },
+    {
+      "id": 35,
+      "first_name": "Trevor",
+      "last_name": "Ratke",
+      "email": "Jamir_Kilback@gmail.com"
+    },
+    {
+      "id": 36,
+      "first_name": "Ashley",
+      "last_name": "Rippin",
+      "email": "Lorenza79@yahoo.com"
+    },
+    {
+      "id": 37,
+      "first_name": "Kailyn",
+      "last_name": "Murazik",
+      "email": "Major.Klein19@yahoo.com"
+    },
+    {
+      "id": 38,
+      "first_name": "Elisha",
+      "last_name": "Kiehn",
+      "email": "Charlene.Cummerata@yahoo.com"
+    },
+    {
+      "id": 39,
+      "first_name": "Dimitri",
+      "last_name": "McClure",
+      "email": "Chanel.Cole@yahoo.com"
+    },
+    {
+      "id": 40,
+      "first_name": "Jacinthe",
+      "last_name": "Beahan",
+      "email": "Zachery68@hotmail.com"
+    }
+  ]
 }

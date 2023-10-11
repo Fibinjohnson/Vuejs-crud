@@ -1,18 +1,15 @@
 <template>
- <div >
- <h1>hello</h1>
-  <LoginForm/>
-  </div>
+  <!-- <nav class="py-8 text-lg">
+    <router-link to="/">Login</router-link>
+  </nav> -->
+
+
+  <router-view/>
 </template>
-
 <script>
-
-import LoginForm from './components/LoginForm'
-
 export default {
-  name: 'App',
- components:{ LoginForm }
-} 
+
+}
 </script>
 
 <style>
@@ -22,6 +19,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+
+
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

@@ -1,27 +1,85 @@
 <template>
-    <form action="/login"  @submit.prevent="login" method="post">
+    <form action="/login"  @submit.prevent="login" method="post" >
 
   <div class="flex-container">
-    <input id="username" type="text" placeholder="Enter Username" name="uname" required>
-    <input  id="pwd" type="password" placeholder="Enter Password" name="psw" required>
+    <input id="username" type="text" placeholder="Enter Username" v-model="loginInfo.username" name="uname"  @blur="validate('username')" 
+            @keypress="validate('username')" >
+            <p 
+                class="text-lg text-red-600 errors"  
+                v-if="!!errors.username"
+            >{{errors.username}}</p>
+    <input  id="pwd" type="password" placeholder="Enter Password" v-model="loginInfo.password" name="psw"   @blur="validate('password')" 
+            @keypress="validate('password')" >
+            <p 
+                class="errors font-large text-lg text-red-600" 
+                v-if="errors.password"
+            >{{errors.password}}</p>
 
-    <button type="submit">Login</button>
+    <button class="bg-blue-500" type="submit">Login</button>
    
   </div>
 </form>
-
 </template>
 
 
 <script>
+import  * as Yup from 'yup'
+const loginFormSchema = Yup.object().shape({
+  username: Yup.string().required("Username cannot be empty"),
+  password: Yup.string().required("Password cannot be empty")
+});
 export default {
-  methods: {
-    login() {
-      let username = document.getElementById('username').value;
-      let password=document.getElementById('pwd').value;
-
-      console.log(username,password, 'username');
+  data() {
+    return {
+      loginInfo: {
+        username: '',
+        password: ''
+      },
+      errors: {
+        username: '',
+        password: ''
+      }
     }
+  },
+  methods: {
+    async login() {
+      loginFormSchema.validate(this.loginInfo,{ abortEarly: false }).then(async()=>{
+        const response= await fetch('http://localhost:3000/credentials',{
+        method:'get'
+      })
+      if(response.ok){
+        let data =await response.json();
+        console.log('Fetched data:', data);
+      console.log('loginInfo:', this.loginInfo);
+
+      const isUsernameMatch = this.loginInfo.username == data[0].username;
+      const isPasswordMatch = this.loginInfo.password == data[0].password;
+
+      console.log('Username match:', isUsernameMatch,this.loginInfo.username,data.username,data);
+      console.log('Password match:', isPasswordMatch);
+        
+      if (isUsernameMatch && isPasswordMatch) {
+        this.$router.push('/home');
+      } else {
+        console.log('Incorrect password or email ID');
+      }
+        }
+      
+      }).catch((err) => {
+        console.log(err.inner,'error')
+          err.inner.forEach((error) => {
+            this.errors = { ...this.errors, [error.path]: error.message };
+          });
+        })
+    },
+    validate(field) {
+      loginFormSchema.validateAt(field, this.loginInfo)
+        .then(() => (this.errors[field] = ""))
+        .catch((err) => {
+          this.errors[err.path] = err.message;
+        }); 
+    },
+
   }
 }
 
@@ -33,6 +91,7 @@ form {
   width:50%;
   margin-right: 450px;
   margin-left: 400px;
+  text-align: left;
 }
 
 input[type=text], input[type=password] {
@@ -46,7 +105,7 @@ input[type=text], input[type=password] {
 
 
 button {
-  background-color: #04AA6D;
+  
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -74,4 +133,7 @@ button:hover {
 h1 {
   color:#04AA6D
 }
+/* .errors {
+  color: red;
+} */
 </style>
