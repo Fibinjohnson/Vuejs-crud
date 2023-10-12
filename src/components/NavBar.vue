@@ -5,9 +5,10 @@
   data-te-navbar-ref>
   <div class="flex w-full flex-wrap items-center justify-between px-3">
     <div class="ml-2">
-      <a class="text-xl text-neutral-800 dark:text-neutral-200" href="#"
-        >CRUDapp</a
-      >
+      <router-link to="/home" class="text-xl text-neutral-800 dark:text-neutral-200">
+  Home
+</router-link>
+      
     </div>
     <!-- Hamburger button for mobile view -->
     <button
@@ -42,44 +43,78 @@
       <ul
         class="list-style-none mr-auto flex flex-col pl-0 lg:mt-1 lg:flex-row"
         data-te-navbar-nav-ref>
-        <!-- Home link -->
-        <li
-          class="my-4 pl-2 lg:my-0 lg:pl-2 lg:pr-1"
-          data-te-nav-item-ref>
-          <a
-            class="active disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-            aria-current="page"
-            href="#"
-            data-te-nav-link-ref
-            >Home</a
-          >
-        </li>
+   
         <!-- Features link -->
         <li
-          class="mb-4 pl-2 lg:mb-0 lg:pl-0 lg:pr-1"
+          class="mb-4 pl-2 ml-4 lg:mb-0 lg:pl-0 lg:pr-1"
           data-te-nav-item-ref>
-          <a
-            class="p-0 text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-            href="#"
-            data-te-nav-link-ref
-            >Add</a
-          >
+         
+          <button @click="addUser" class="bg-white-700 hover: bg-gray-100 rounded py-2 px-4 text-black-600 font-semibold shadow border-gray-300">Add New data</button>
         </li>
         <!-- Pricing link -->
-        <li
-          class="mb-4 pl-2 lg:mb-0 lg:pl-0 lg:pr-1"
-          data-te-nav-item-ref>
-          <a
-            class="p-0 text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
-            href="#"
-            data-te-nav-link-ref
-            >Edit</a
-          >
-        </li>
       </ul>
-      <span class="ml-2 text-neutral-500 dark:text-neutral-200"
-        >Admin</span
+      
+      
+  <div>
+    <div class="relative">
+      <!-- Dropdown toggle button -->
+      <button
+        @click="show = !show"
+        class="flex items-center p-2 text-indigo-100 bg-gray-600 rounded-md"
       >
+        <span class="mr-4">Admin</span>
+        <svg
+          class="w-5 h-5 text-indigo-100 dark:text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        
+        >
+          <path
+            
+            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+
+      <!-- Dropdown menu -->
+      <div
+        v-show="show"
+        class="
+          absolute
+          right-0
+          py-2
+          mt-2
+          bg-gray-500
+          rounded-md
+          shadow-xl
+          w-44
+          bg-gray-500
+          shadow
+        "
+      >
+        <router-link
+          to="/"
+          @click="logout"
+          class="
+            block
+            px-4
+            py-2
+            text-sm text-indigo-100
+            hover:bg-gray-400 hover:text-indigo-100
+            bg-gray-500
+          "
+        >
+          Logout
+        </router-link>
+  
+       
+      </div>
+    </div>
+  </div>
+
+
+
     </div>
   </div>
 </nav>
@@ -87,7 +122,22 @@
 
 <script>
 export default {
-   
+  data() {
+      return {
+        show: false,
+      };
+    },
+   methods :{
+    addUser(){
+      this.$router.push('/addUser')
+    },
+    navigateHome(){
+      this.$router.push('/home')
+    },
+    logout(){
+        localStorage.removeItem('user')
+     }
+   }
 }
 </script>
 

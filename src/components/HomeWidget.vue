@@ -1,7 +1,7 @@
 <template>
     <div>
       <NavBar/>
-      <ModalVue @getStatus="status" @editedData="editedData" :status="showEdit" :firstName="editedNamePh" :lastName="editedLnameph" :email="editedEmailph"/>
+      <ModalVue @getStatus="status" @editedData="editedData" :status="showEdit" :id="editedId" :firstName="editedNamePh" :lastName="editedLnameph" :email="editedEmailph"/>
       <!-- <EditWidgetVue v-if="showEdit"/> -->
       <div class="flex flex-col">
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -50,9 +50,10 @@ data(){
       showEdit:false,
       shouldFetchData : false,
       showModal:false,
-      editedNamePh:'',
-      editedLnameph:'',
-      editedEmailph:'',
+      editedNamePh:null,
+      editedLnameph:null,
+      editedEmailph:null,
+      editedId:null,
       isEdited:'false',
     
     }
@@ -65,7 +66,6 @@ methods : {
        })
        const users=await response.json()
        this.usersData=users
-     
     },
     async deleteUsers(id){
         const response=await fetch(`http://localhost:3000/users/${id}`,{
@@ -82,18 +82,27 @@ methods : {
         const updatedUser1=await responseData.json();
         this.editedNamePh=updatedUser1.first_name
         this.editedLnameph=updatedUser1.last_name
-        this.editedEmailph=updatedUser1.email
-        console.log('start',this.editedNamePh,this.editedLnameph,this.editedEmailph,"required",console.log(updatedUser1))
+        this.editedEmailph=updatedUser1.email,
+        this.editedId=updatedUser1.id
         this.showEdit=!this.showEdit
-        if(this.isEdited){
+     
+    },
+    status(data){
+      this.showEdit=data;
+    },
+   async editedData(data  ){
+      this.editedNamePh=data.fName
+      this.editedLnameph=data.lName
+      this.editedEmailph=data.Email
+      {
           console.log('started',this.editedEmailph)
-          const response=await fetch(`http://localhost:3000/users/${id}`,{
+           await fetch(`http://localhost:3000/users/${data.id}`,{
             method:"PATCH",
             headers: {
                'Content-Type':'application/json'
              },
              body: JSON.stringify({
-              id:id,
+              id:data.id,
               first_name:this.editedNamePh,
               last_name:this.editedLnameph,
               email:this.editedEmailph
@@ -101,21 +110,10 @@ methods : {
 
             
         })
-        this.isEdited=!this.isEdited
-        const updatedUser=await response.json();
-        console.log('null',updatedUser,'null')
+        this.showEdit=false
+        this.shouldFetchData=true
+        
         }
-     
-    },
-    status(data){
-      this.showEdit=data;
-    },
-    editedData(data){
-      console.log(data,"data")
-      this.isEdited=true
-      this.editedNamePh=data.fName
-      this.editedLnameph=data.lName
-      this.editedEmailph=data.Email
       
       
     }

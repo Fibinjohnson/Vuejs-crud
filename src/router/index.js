@@ -1,19 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from "../components/HomeWidget.vue"
 import LoginForm from "../components/LoginForm.vue"
+import AddWidget from "../components/AddWidget.vue"
+
 
 const routes = [
   {
+    path: '/AddUser',
+    name :'Adduser',
+    component:AddWidget
+  },
+  {
     path: '/home',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    beforeEnter:(to,from,next)=>{
+       const user=localStorage.getItem('user')
+      console.log(user,'global var')
+      if(user){
+        next()
+      }else{
+        next('/')
+      }
+    }
   },
   {
     path: '/',
     name: 'login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: LoginForm
   }
 ]
@@ -24,3 +37,4 @@ const router = createRouter({
 })
 
 export default router
+

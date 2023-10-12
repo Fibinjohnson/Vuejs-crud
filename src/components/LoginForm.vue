@@ -1,4 +1,5 @@
 <template>
+  <div  class=" flex items-center justify-center m-8">
     <form action="/login"  @submit.prevent="login" method="post" >
 
   <div class="flex-container">
@@ -19,6 +20,7 @@
    
   </div>
 </form>
+</div>
 </template>
 
 
@@ -29,8 +31,10 @@ const loginFormSchema = Yup.object().shape({
   password: Yup.string().required("Password cannot be empty")
 });
 export default {
+  
   data() {
     return {
+      loginUser:false,
       loginInfo: {
         username: '',
         password: ''
@@ -41,6 +45,7 @@ export default {
       }
     }
   },
+
   methods: {
     async login() {
       loginFormSchema.validate(this.loginInfo,{ abortEarly: false }).then(async()=>{
@@ -49,9 +54,6 @@ export default {
       })
       if(response.ok){
         let data =await response.json();
-        console.log('Fetched data:', data);
-      console.log('loginInfo:', this.loginInfo);
-
       const isUsernameMatch = this.loginInfo.username == data[0].username;
       const isPasswordMatch = this.loginInfo.password == data[0].password;
 
@@ -59,7 +61,11 @@ export default {
       console.log('Password match:', isPasswordMatch);
         
       if (isUsernameMatch && isPasswordMatch) {
+       this.loginUser=true
+       localStorage.setItem('user', this.loginUser)
+       console.log(this.loginUser,'user')
         this.$router.push('/home');
+        
       } else {
         console.log('Incorrect password or email ID');
       }
@@ -87,12 +93,7 @@ export default {
 
 <style scoped> 
 
-form {
-  width:50%;
-  margin-right: 450px;
-  margin-left: 400px;
-  text-align: left;
-}
+
 
 input[type=text], input[type=password] {
   width: 100%;
@@ -118,18 +119,14 @@ button {
 button:hover {
   opacity: 0.8;
 }
-.flex-container {
+/* .flex-container {
   display:flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
  
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+} */
+
 h1 {
   color:#04AA6D
 }

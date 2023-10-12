@@ -54,7 +54,7 @@ import { Modal } from 'flowbite-vue'
 <script> 
 
 export default {
-  props: ['status','firstName','lastName','email'],
+  props: ['status','firstName','lastName','email','id'],
 data() {
  return {
   isShowModal: '',
@@ -70,7 +70,9 @@ modalStatus(){
 editUser(){
   this.$emit('editedData',{fName:this.editedFname,
   lName:this.editedLname,
-   Email:this.editedEmail})
+   Email:this.editedEmail,
+  id:this.id})
+  
 }
 
 },
