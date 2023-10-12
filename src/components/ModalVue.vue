@@ -64,7 +64,6 @@ data() {
  }
 },
 methods : {
-
 modalStatus(){
       this.$emit('getStatus',this.isShowModal)
     },
@@ -76,9 +75,9 @@ editUser(){
 
 },
 updated(){
-  this.editedEmail=this.email,
   this.editedFname=this.firstName,
-  this.editedLname=this.lastName
+  this.editedLname=this.lastName,
+  this.editedEmail=this.email
 }
 
 }
