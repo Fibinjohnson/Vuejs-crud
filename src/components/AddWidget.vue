@@ -55,9 +55,9 @@
 import NavBar from './NavBar.vue';
 import * as Yup from 'yup'
 const inputSchema=Yup.object().shape({
-  FirstName:Yup.string().required('required'),
-  LastName:Yup.string().required('required'),
-  Email:Yup.string().email().required('required')
+  FirstName:Yup.string().required('*required'),
+  LastName:Yup.string().required('*required'),
+  Email:Yup.string().email().required('*required')
 })
 export default {
 
@@ -92,9 +92,9 @@ export default {
        },
        body:JSON.stringify({
           id:Nid,
-          first_name:this.FirstName,
-          last_name:this.LastName,
-          email:this.Email
+          first_name:this.inputInfo.FirstName,
+          last_name:this.inputInfo.LastName,
+          email:this.inputInfo.Email
        })
      })
     }
@@ -112,9 +112,7 @@ export default {
           this.errors[err.path] = err.message;
         }); 
     }
-
   }
-
 }
 </script>
 

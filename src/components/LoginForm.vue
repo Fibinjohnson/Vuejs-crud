@@ -3,16 +3,16 @@
     <form action="/login"  @submit.prevent="login" method="post" >
 
   <div class="flex-container">
-    <input id="username" type="text" placeholder="Enter Username" v-model="loginInfo.username" name="uname"  @blur="validate('username')" 
+    <input class="border border-red" :class="{'border border-red-700':errors.username}" id="username" type="text" placeholder="Enter Username" v-model="loginInfo.username" name="uname"  @blur="validate('username')" 
             @keypress="validate('username')" >
             <p 
-                class="text-lg text-red-600 errors"  
+                class="text-sm text-red-600 errors"  
                 v-if="!!errors.username"
             >{{errors.username}}</p>
-    <input  id="pwd" type="password" placeholder="Enter Password" v-model="loginInfo.password" name="psw"   @blur="validate('password')" 
+    <input :class="{'border border-red-700':errors.password}" id="pwd" type="password" placeholder="Enter Password" v-model="loginInfo.password" name="psw"   @blur="validate('password')" 
             @keypress="validate('password')" >
             <p 
-                class="errors font-large text-lg text-red-600" 
+                class="errors font-large text-sm text-red-600" 
                 v-if="!!errors.password"
             >{{errors.password}}</p>
 
@@ -27,8 +27,8 @@
 <script>
 import  * as Yup from 'yup'
 const loginFormSchema = Yup.object().shape({
-  username: Yup.string().required("Username cannot be empty"),
-  password: Yup.string().required("Password cannot be empty....")
+  username: Yup.string().required("*Username cannot be empty"),
+  password: Yup.string().required("*Password cannot be empty")
 });
 export default {
   
@@ -95,8 +95,8 @@ input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+ 
+ 
   
 }
 
