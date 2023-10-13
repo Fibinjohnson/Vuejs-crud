@@ -8,12 +8,6 @@
   ],
   "users": [
     {
-      "id": 4,
-      "first_name": "Rhianna",
-      "last_name": "Beier",
-      "email": "Anika18@gmail.com"
-    },
-    {
       "id": 5,
       "first_name": "Mallory",
       "last_name": "Feest",
@@ -324,6 +318,12 @@
       "first_name": "hjjOma",
       "last_name": "Johnson",
       "email": "fibinjohnson123@gmail.com"
+    },
+    {
+      "id": 59,
+      "first_name": "hjjOma",
+      "last_name": "Johnson",
+      "email": "Arturo.Walker-Kub@gmail.com"
     }
   ]
 }

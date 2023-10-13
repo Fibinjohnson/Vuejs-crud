@@ -35,10 +35,7 @@
       Email
     </label>
     <input :class="{'border border-red-600':errors.editedEmail}" @blur="validate('editedEmail')" @keypress="validate('editedEmail')" v-model="inputInfo.editedEmail" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="email" >
-    <p 
-                class="errors font-large text-sm text-red-600" 
-                v-if="errors.editedEmail"
-            >{{errors.editedEmail}}</p>
+    <p class="errors font-large text-sm text-red-600" v-if="errors.editedEmail">{{errors.editedEmail}}</p>
   </div>
 </div>
 <div class="flex justify-center">
@@ -88,9 +85,8 @@ modalStatus(){
       this.$emit('getStatus',this.isShowModal)
     },
 editUser(){
-  console.log('started')
   inputSchema.validate(this.inputInfo,{ abortEarly : false }).then(()=>{
-    this.$emit('editedData',{fName:this.inputInfo.editedFname,
+   this.$emit('editedData',{fName:this.inputInfo.editedFname,
   lName:this.inputInfo.editedLname,
    Email:this.inputInfo.editedEmail,
   id:this.id})
@@ -106,17 +102,14 @@ validate(field) {
       inputSchema.validateAt(field, this.inputInfo)
         .then(() => (this.errors[field] = ""))
         .catch((err) => {
-          console.log(err,'....')
           this.errors[err.path] = err.message;
         }); 
     }
-
 },
 updated(){
   this.inputInfo.editedFname=this.firstName,
   this.inputInfo.editedLname=this.lastName,
   this.inputInfo.editedEmail=this.email
 }
-
 }
 </script>

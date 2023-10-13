@@ -83,9 +83,7 @@ methods : {
 
     },
     async editUsers(id){
-        // const responseData=await fetch(`http://localhost:3000/users/${id}`,{
-        //     method:"GET",
-        // })
+     
         const updatedUser1=this.usersData.filter((user)=>{return user.id===id})
         console.log(updatedUser1[0],'edited')
         this.editedNamePh=updatedUser1[0].first_name

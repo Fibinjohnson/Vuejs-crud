@@ -10,10 +10,7 @@
         First Name
       </label>
       <input @blur="validate('FirstName')" :class="{'border border-red-500 ':errors.FirstName}" @keypress="validate('FirstName')" v-model="inputInfo.FirstName" class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text">
-      <p 
-                class="errors font-large text-sm text-red-600" 
-                v-if="errors.FirstName"
-            >{{errors.FirstName}}</p>
+      <p class="errors font-large text-sm text-red-600"  v-if="errors.FirstName">{{errors.FirstName}}</p>
     </div>
     <div class="w-full md:w-1/2 px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
@@ -21,10 +18,7 @@
       </label>
      
        <input :class="{'border border-red-500 ':errors.LastName}"  @blur="validate('LastName')" @keypress="validate('LastName')" v-model="inputInfo.LastName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" >
-       <p 
-                class="errors font-large text-sm text-red-600" 
-                v-if="errors.LastName"
-            >{{errors.LastName}}</p>
+       <p class="errors font-large text-sm text-red-600"  v-if="errors.LastName">{{errors.LastName}}</p>
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
@@ -33,10 +27,7 @@
         Email
       </label>
       <input :class="{'border border-red-500 ':errors.Email}"  @blur="validate('Email')" @keypress="validate('Email')" v-model="inputInfo.Email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="email" >
-      <p 
-                class="errors font-large text-sm text-red-600" 
-                v-if="errors.Email"
-            >{{errors.Email}}</p>
+      <p class="errors font-large text-sm text-red-600" v-if="errors.Email">{{errors.Email}}</p>
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
@@ -44,7 +35,6 @@
       <button  type="submit" class="py-2 px-4  bg-blue-700 rounded text-black-600 border border-blue-500 hover:border-black bg-white font-semibold">Add user</button>     
     </div>
   </div>
- 
 </form>
 </div>
 </div>
@@ -115,7 +105,5 @@ export default {
   }
 }
 </script>
-
 <style>
-
 </style>
