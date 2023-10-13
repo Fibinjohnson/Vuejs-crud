@@ -13,7 +13,7 @@
             @keypress="validate('password')" >
             <p 
                 class="errors font-large text-lg text-red-600" 
-                v-if="errors.password"
+                v-if="!!errors.password"
             >{{errors.password}}</p>
 
     <button class="bg-blue-500" type="submit">Login</button>
@@ -56,9 +56,6 @@ export default {
         let data =await response.json();
       const isUsernameMatch = this.loginInfo.username == data[0].username;
       const isPasswordMatch = this.loginInfo.password == data[0].password;
-
-      console.log('Username match:', isUsernameMatch,this.loginInfo.username,data.username,data);
-      console.log('Password match:', isPasswordMatch);
         
       if (isUsernameMatch && isPasswordMatch) {
        this.loginUser=true
@@ -72,7 +69,6 @@ export default {
         }
       
       }).catch((err) => {
-        console.log(err.inner,'error')
           err.inner.forEach((error) => {
             this.errors = { ...this.errors, [error.path]: error.message };
           });
