@@ -16,7 +16,7 @@ const routes = [
     component: HomeView,
     beforeEnter:(to,from,next)=>{
        const user=localStorage.getItem('user')
-      console.log(user,'global var')
+  
       if(user){
         next()
       }else{

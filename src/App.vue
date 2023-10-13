@@ -1,7 +1,5 @@
 <template>
-  <!-- <nav class="py-8 text-lg">
-    <router-link to="/">Login</router-link>
-  </nav> -->
+ 
 
 
   <router-view/>

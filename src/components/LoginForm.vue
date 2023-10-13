@@ -1,5 +1,5 @@
 <template>
-  <div  class=" flex items-center justify-center m-8">
+  <div  class=" flex items-center justify-center mt-10">
     <form action="/login"  @submit.prevent="login" method="post" >
 
   <div class="flex-container">
@@ -28,7 +28,7 @@
 import  * as Yup from 'yup'
 const loginFormSchema = Yup.object().shape({
   username: Yup.string().required("Username cannot be empty"),
-  password: Yup.string().required("Password cannot be empty")
+  password: Yup.string().required("Password cannot be empty....")
 });
 export default {
   
@@ -66,8 +66,8 @@ export default {
        console.log(this.loginUser,'user')
         this.$router.push('/home');
         
-      } else {
-        console.log('Incorrect password or email ID');
+        } else {
+          console.log('Incorrect password or email ID');
       }
         }
       

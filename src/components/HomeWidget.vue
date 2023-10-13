@@ -1,8 +1,8 @@
+/* eslint-disable */ 
 <template>
     <div>
       <NavBar/>
       <ModalVue @getStatus="status" @editedData="editedData" :status="showEdit" :id="editedId" :firstName="editedNamePh" :lastName="editedLnameph" :email="editedEmailph"/>
-      <!-- <EditWidgetVue v-if="showEdit"/> -->
       <div class="flex flex-col">
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -40,7 +40,6 @@
 
 <script>
 import ModalVue from './ModalVue.vue'
-// import EditWidgetVue from './EditWidget.vue';
 import NavBar from './NavBar.vue';
 export default {
  props : ['isShowModal'],
@@ -68,12 +67,12 @@ methods : {
        this.usersData=users
     },
     async deleteUsers(id){
-        const response=await fetch(`http://localhost:3000/users/${id}`,{
+       const res= await fetch(`http://localhost:3000/users/${id}`,{
             method:'delete'
         })
-        const updatedUser=await response.json()
-        this.usersData=updatedUser
-        this.shouldFetchData = true
+     
+     
+        // this.shouldFetchData = true
     },
     async editUsers(id){
         const responseData=await fetch(`http://localhost:3000/users/${id}`,{
@@ -126,13 +125,13 @@ mounted () {
    
     
 },
-updated () {
-  if(this.shouldFetchData){
-    this.getUsers()
-    this.shouldFetchData = false
-  }
+// updated () {
+//   if(this.shouldFetchData){
+//     this.getUsers()
+//     this.shouldFetchData = false
+//   }
     
-}
+// }
 }
 </script>
 

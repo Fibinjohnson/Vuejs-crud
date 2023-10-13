@@ -3,8 +3,8 @@ const faker = require('@faker-js/faker');
 function generateEmployees() {
     var users = [];
     for (var id = 0; id < 50; id++) {
-      var firstName = faker.person.firstName(); // 
-      var lastName = faker.person.lastName();   // 
+      var firstName = faker.person.firstName(); 
+      var lastName = faker.person.lastName();    
       var email = faker.internet.email();
       users.push({
         "id": id,
