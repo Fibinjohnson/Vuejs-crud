@@ -122,6 +122,7 @@
 
 <script>
 export default {
+  props:['userData'],
   data() {
       return {
         show: false,
@@ -130,6 +131,7 @@ export default {
    methods :{
     addUser(){
       this.$router.push('/addUser')
+      this.$emit('userDb',this.userData)
     },
     navigateHome(){
       this.$router.push('/home')

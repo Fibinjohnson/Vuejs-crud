@@ -1,7 +1,8 @@
 /* eslint-disable */ 
 <template>
     <div>
-      <NavBar/>
+      
+      <NavBar />
       <ModalVue @getStatus="status" @editedData="editedData" :status="showEdit" :id="editedId" :firstName="editedNamePh" :lastName="editedLnameph" :email="editedEmailph"/>
       <div class="flex flex-col">
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -39,15 +40,17 @@
 </template>
 
 <script>
+import AppWidget from "./AddWidget.vue"
 import ModalVue from './ModalVue.vue'
 import NavBar from './NavBar.vue';
 export default {
  props : ['isShowModal'],
+
 data(){
     return {
       usersData:'',
+      showAddComp:false,
       showEdit:false,
-      shouldFetchData : false,
       showModal:false,
       editedNamePh:null,
       editedLnameph:null,
@@ -57,32 +60,38 @@ data(){
     
     }
 }  ,  
-components:{NavBar ,ModalVue },
+components:{NavBar ,ModalVue,AppWidget },
 methods : {
     async getUsers(){
        const response=await fetch('http://localhost:3000/users',{
         method:'get'
        })
-       const users=await response.json()
+       let users=await response.json()
        this.usersData=users
+       
+      if(response.ok){
+        localStorage.setItem('userdata',JSON.stringify(users) )
+       
+      }
     },
     async deleteUsers(id){
        const res= await fetch(`http://localhost:3000/users/${id}`,{
             method:'delete'
         })
-     
-     
-        // this.shouldFetchData = true
+      console.log(this.usersData)
+       this.usersData=this.usersData.filter((user)=>{return user.id!==id})
+
     },
     async editUsers(id){
-        const responseData=await fetch(`http://localhost:3000/users/${id}`,{
-            method:"GET",
-        })
-        const updatedUser1=await responseData.json();
-        this.editedNamePh=updatedUser1.first_name
-        this.editedLnameph=updatedUser1.last_name
-        this.editedEmailph=updatedUser1.email,
-        this.editedId=updatedUser1.id
+        // const responseData=await fetch(`http://localhost:3000/users/${id}`,{
+        //     method:"GET",
+        // })
+        const updatedUser1=this.usersData.filter((user)=>{return user.id===id})
+        console.log(updatedUser1[0],'edited')
+        this.editedNamePh=updatedUser1[0].first_name
+        this.editedLnameph=updatedUser1[0].last_name
+        this.editedEmailph=updatedUser1[0].email,
+        this.editedId=updatedUser1[0].id
         this.showEdit=!this.showEdit
      
     },
@@ -93,8 +102,7 @@ methods : {
       this.editedNamePh=data.fName
       this.editedLnameph=data.lName
       this.editedEmailph=data.Email
-      {
-          console.log('started',this.editedEmailph)
+      {  
            await fetch(`http://localhost:3000/users/${data.id}`,{
             method:"PATCH",
             headers: {
@@ -106,15 +114,16 @@ methods : {
               last_name:this.editedLnameph,
               email:this.editedEmailph
              })
-
-            
         })
         this.showEdit=false
-        this.shouldFetchData=true
+        this.usersData=await this.usersData.map((user)=>{ if(user.id===data.id){
+          return {...user,id:user.id,first_name:this.editedNamePh, last_name:this.editedLnameph,
+              email:this.editedEmailph}
+              
+        }
+        return user})
         
         }
-      
-      
     }
   
     
@@ -122,8 +131,6 @@ methods : {
 },
 mounted () {
     this.getUsers()
-   
-    
 },
 // updated () {
 //   if(this.shouldFetchData){

@@ -43,20 +43,27 @@
 <script>
 import NavBar from './NavBar.vue';
 export default {
+
   data() {
    return {
     FirstName:'',
     LastName:'',
     Email:'',
+    userDatas:''
    }
   },
   components:{NavBar },
   methods : {
+  
    async addUser() {
-    const res=await fetch('http://localhost:3000/users',{
-      method:'GET'
-    })
-    const users=await res.json();
+
+    // const res=await fetch('http://localhost:3000/users',{
+    //   method:'GET'
+    // })
+    this.userDatas=JSON.parse(localStorage.getItem('userdata'))
+      
+    const users=this.userDatas;
+    console.log(this.userDatas,'userDatas')
     console.log(users,'users')
     const lastId = Math.max(...users.map(user => user.id));
     let Nid=lastId+1
@@ -77,8 +84,8 @@ export default {
     this.$router.push('/home')
   
    }
-  }
 
+  }
 
 }
 </script>
